@@ -7,7 +7,57 @@
 </head>
 <body>
     <script>
-        
+        function getComputerChoice() {
+            // Make a random number
+            randomNum = Math.random()
+
+            // Find result based on random number generated 0-1
+            randomNum <= 0.33 ? computerChoice = "Rock" : 
+            randomNum <= 0.66 ? computerChoice = "Paper" : 
+            computerChoice = "Scissors"
+
+            // Return result in string
+            return(computerChoice)
+            console.log(computerChoice)
+        }
+
+        function runGame() {
+            // Asks player for their choice
+            let playerChoice = prompt("What do you pick?")
+            // Assuming player enters the right letters for ROCK, PapER, or scissors, make it into 'Rock' 'Paper' or 'Scissors'
+            playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase()
+            // Runs function to get computer choice
+            let computerChoice = getComputerChoice()
+
+            // Debugging console.logs
+            console.log("Computer Selection: "+computerChoice)
+            console.log("Player Selection: "+playerChoice)
+
+            // Checks if comp and player selected same, if so then tie
+            if (computerChoice == playerChoice) {
+                console.log("Tie!"); return
+            }
+            
+            // Checks all possible win conditions and returns true
+             if ((computerChoice == "Rock" && playerChoice == "Paper") || 
+                (computerChoice == "Paper" && playerChoice == "Scissors") ||
+                (computerChoice == "Scissors" && playerChoice == "Rock")) {
+                    console.log("Player Wins!") ; return
+                } else {
+                    console.log("Computer Wins!") ; return
+                }
+                // Every other possibility has been checked, so the computer must have won.
+        }
+
+        function playFiveGames() {
+            for (let i = 0; i <= 5; i++) {
+                runGame()
+            }
+        }
+
+        playFiveGames()
+
+
     </script>
 </body>
 </html>
